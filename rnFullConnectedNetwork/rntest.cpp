@@ -8,7 +8,7 @@ int main()
 	rnm[1][1] = 10;
 	cout<<endl;
 	rnm.display();
-	rnmatrix<double> rnm2(5,5,0);
+	rnmatrix<double> rnm2(5,5,-2);
 	cout<<endl;
 	(rnm+rnm2).display();
 	cout<<endl;
@@ -17,4 +17,6 @@ int main()
 	(rnm*100).display();
 	cout<<endl;
 	(rnm*rnm2).display();
+	cout<<endl;
+	(rnmatrix<double>().dotTime(rnm,rnm2)).display();
 }
