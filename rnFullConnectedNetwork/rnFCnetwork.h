@@ -4,9 +4,9 @@
 
 //activator must be sigmoid
 /* This program has realized basic full connected network.
- * There are two class types about FC and one class type about matrix operation
+ * This program contains two class types about FC and one class type about matrix operation
  * This FC was implemented using sigmoid function as activator
- * Only supported C++11 and higher versions
+ * Using C++11
  */
 #include"rnMat.hpp"
 #include<iostream>
@@ -31,12 +31,12 @@ class rnFullConnectedLayer
 public:
 	typedef double data_type;
 	typedef std::size_t size_type;
-
-private:
 	rnFullConnectedLayer() = default;
 	//construction func, arguments mean input dimension, output dimension and activitor(must be sigmoid) from left to right each.
 	rnFullConnectedLayer(const size_type rnin_dim, const size_type rnout_dim, const std::function<const data_type(const data_type)> rnf);
-	
+
+private:
+		
 	//single layer output and delta calculation.
 	rnmatrix<data_type> getOutput(const rnmatrix<data_type>& rnmat);
 	rnmatrix<data_type> getNextDelta(const rnmatrix<data_type>& rnmat);
@@ -78,9 +78,10 @@ public:
 			const double rnlearning_rate, const size_type rniter_times = 1);
 	//calculate error between one data vector and related label.
 	data_type getSingleSampleError(const rnmatrix<data_type>& rnpred_data, const rnmatrix<data_type>& rnlabel)const;
-	//check gradient that is used to verify correction.
-	void rncheck();
+
 private:
+	//check gradient that is used to verify correction of this code.
+	void rncheck();
 	//calculate output layer delta
 	rnmatrix<data_type> get_output_layer_delta(const rnmatrix<data_type>& rnpredict_output, const rnmatrix<data_type>& rnlabel)const;
 	//change weight parameter according to every layer delta
