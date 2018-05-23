@@ -32,7 +32,6 @@ void rnLstmLayer::training(const std::vector<rnmatrix<data_type>>& rnvvec_data, 
 	size_type rntrain_s = rntrain_size;
 	if(rnvvec_data.size() <= rntrain_size)
 		rntrain_s = rnvvec_data.size() - 1;
-	//size_type rntest_s = rnvvec_data.size() - rntrain_s;
 	
 	data_type rntime_cost = 0;
 	size_type rniter = 0;
@@ -58,14 +57,14 @@ void rnLstmLayer::training(const std::vector<rnmatrix<data_type>>& rnvvec_data, 
 		rntime_cost = (std::clock() - rnstart)/rnclocks_per_sec;
 		++rniter;
 #ifndef RNDEBUG
-		std::cout<<rnerror_now<<std::endl;
+//		std::cout<<rnerror_now<<std::endl;
 #endif
 	}
 	error = rnerror_now;
 }
 rnmatrix<rnLstmLayer::data_type> rnLstmLayer::getLastDelta(const rnmatrix<data_type>& rny, const rnmatrix<data_type>& rnt) const
 {
-	return rny - rnt;// errorfun = 0.5 sigma((t-y)^2);
+	return rny - rnt;// errorfun = 0.5*sigma((t-y)^2);
 }
 void rnLstmLayer::check() 
 {
